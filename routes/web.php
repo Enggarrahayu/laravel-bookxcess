@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +16,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function(){
-	return view('home');
+  Alert::success('Success Title', 'Success Message');
+
+	return view('welcome');
 });
 
 Route::get('/customerhome', function() {

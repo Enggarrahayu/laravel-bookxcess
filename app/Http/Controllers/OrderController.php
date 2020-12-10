@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\ebookModel;
 use App\Models\Order;
 use Carbon\Carbon;
-use Alert;
+use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\OrderDetail;
 use Auth;
 
@@ -41,8 +41,7 @@ class OrderController extends Controller
 		$order_detail->total_price = $ebook->ebook_price*$request->qty;
 		$order_detail->save();
 
-		alert()->success('Success Message', 'Optional Title');
-
+		 Alert::success('Book Has Been Added To Cart', 'Success!');
 		return redirect('customer');
 	}
 

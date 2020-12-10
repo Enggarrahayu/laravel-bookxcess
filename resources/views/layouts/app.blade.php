@@ -10,9 +10,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <!-- Fonts -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
@@ -79,8 +77,8 @@
             @yield('content')
         </main>
     </div>
-      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-      @include('sweet::alert')
+        <script src="/pathto/js/sweetalert.js"></script>
+        @include('sweet::alert')
     </body>
 
 </html>

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Input; //untuk input::get
 use Illuminate\Support\Facades\Auth;
 use DB;
 use App\Models\User;
+use Alert;
 use Redirect; //untuk redirect
 
 class AuthController extends Controller
@@ -19,6 +20,7 @@ class AuthController extends Controller
 
 	public function getLogin()
     {
+        Alert::success('pesan yang ingin disampaikan', 'Judul Pesan');
     	 return view('/frontend/login-index');
     }
 
@@ -26,6 +28,7 @@ class AuthController extends Controller
 	public function postlogin(Request $request)
 	    {
 	    	if (Auth::attempt($request->only('email','password'))) {
+                    
 	    			return redirect('/customer');
 	    	} return redirect('/auth');
 	    }
