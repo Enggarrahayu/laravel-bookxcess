@@ -9,16 +9,16 @@ class OrderDetail extends Model
 {
     use HasFactory;
     protected $table = 'tb_order_detail';
-    protected $primaryKey = "detail_ID";
+    protected $primaryKey = "id";
 
     public function ebook()
     {
-    	return $this->belongsTo('App\Models\ebookModel', 'ebook_ID','detail_ID');
+    	return $this->belongsTo(Ebook::class);
     }
 
     public function order()
     {
-    	return $this->belongsTo('App\Models\Order','order_ID','detail_ID');
+    	return $this->belongsTo(Order::class);
     }
 
 }

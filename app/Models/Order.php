@@ -9,15 +9,17 @@ class Order extends Model
 {
     use HasFactory;
     protected $table = 'tb_order';
-      protected $primaryKey = "order_ID";
+    protected $primaryKey = "id";
+
+
 
     public function user()
     {
-    	return $this->belongsTo('App\Models\User','user_ID', 'order_ID');
+    	return $this->belongsTo(User::class);
     }
 
     public function order_detail()
     {
-    	return $this->hasMany('App\Models\OrderDetail','order_ID','detail_ID');
+    	return $this->hasMany(OrderDetail::class);
     }
 }

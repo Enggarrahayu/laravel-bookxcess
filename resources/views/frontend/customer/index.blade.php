@@ -8,6 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         
         <title>Bookxcess</title>
 
@@ -63,7 +64,12 @@
                             <ul class="menu">
                                 <li class="menu-item home current-menu-item"><a href="/customerhome"><i class="icon-home"></i></a></li>
                                 <li class="menu-item"><a href="products.html">My Collection</a></li>
-                                <li class="menu-item"><a href="/cart">Purchase Now</a></li>
+                                <li class="menu-item">
+                                    <?php
+                                    $main_order = \App\Models\Order::where('user_ID', Auth::user()->id)->where('status',0)->first();
+                                    $notif = \App\Models\OrderDetail::where('order_ID', $main_order->order_ID)->count();
+                                    ?> 
+                                    <a href="/cart"><i class="fa fa-shopping-cart" style="color:black"></i> <span class="badge badge-danger">{{ $notif }}</span>Purchase Now </a></li>
                                 <li class="menu-item"><a href="/contactuscust">Contact Us</a></li>
                                 <li class="menu-item"><a href="/aboutuscust">About Us</a></li>
                             </ul> <!-- .menu -->

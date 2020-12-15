@@ -61,6 +61,7 @@ Route::get('logout', '\App\Http\Controllers\AuthController@logout');
 Route::get('/register', 'App\Http\Controllers\AuthController@getRegister')->name('register');
 Route::post('/user/add','App\Http\Controllers\AuthController@postRegister')->name('user/add');
 Route::get('detail/{id}', 'App\Http\Controllers\DetailController@index');
+Route::get('checkout','App\Http\Controllers\OrderController@checkout');
 
 
 Route::post('order/{id}','\App\Http\Controllers\OrderController@order');
