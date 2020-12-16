@@ -8,7 +8,7 @@
 								<div class="col-sm-6 col-md-4">
 									<div class="product-images">
 										<figure class="large-image">
-											<a href="dummy/image-1.jpg"><img src="data:image/png;base64,{{ chunk_split(base64_encode($ebook->ebook_image)) }}" alt="Game 1" alt=""></a>
+											<a href="dummy/image-1.jpg"><img src="{{ url('storage') }}/{{ $ebook->ebook_image }}" alt="Game 1" alt=""></a>
 										</figure>
 										
 									</div>

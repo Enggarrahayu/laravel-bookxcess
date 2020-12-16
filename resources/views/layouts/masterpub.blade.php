@@ -51,17 +51,7 @@
 					</a> <!-- #branding -->
 
 					<div class="right-section pull-right">
-						 <?php
-                                    $main_order = \App\Models\Order::where('user_id', Auth::user()->id)->where('status',0)->first();
-                                    if (!empty($main_order)) {
-                                    	$notif = \App\Models\OrderDetail::where('order_id', $main_order->id)->count();
-                                    }
-                                    
-                                    ?>
-						<a href="/checkout" class="cart"><i class="icon-cart"></i> 
-							@if(!empty($notif))
-						{{$notif}} items in cart</a>
-							@endif
+							
 						<a href="#">My Account</a>
 						<a href="/logout">Logout <small> {{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->email }}} </small></a>
 					</div> <!-- .right-section -->
@@ -69,21 +59,11 @@
 					 <div class="main-navigation">
                             <button class="toggle-menu"><i class="fa fa-bars"></i></button>
                             <ul class="menu">
-                                <li class="menu-item home current-menu-item"><a href="/customer"><i class="icon-home"></i></a></li>
-                                <li class="menu-item"><a href="/mycollection">My Collection</a></li>
-                                <li class="menu-item">
-                                      <?php
-                                    $main_order = \App\Models\Order::where('user_id', Auth::user()->id)->where('status',0)->first();
-                                    if (!empty($main_order)) {
-                                    	$notif = \App\Models\OrderDetail::where('order_id', $main_order->id)->count();
-                                    }
-                                    
-                                    ?>
-                                    <a href="/checkout">@if(!empty($notif))
-                                    	{{$notif}}
-                                    	@endif<i class="fa fa-shopping-cart" style="color:black"></i> <span class="badge badge-danger"></span>Purchase Now </a></li>
-                                <li class="menu-item"><a href="/history">History</a></li>
-                                <li class="menu-item"><a href="/contactuscust">Contact Us</a></li>
+                                <li class="menu-item home current-menu-item"><a href="/publisher"><i class="icon-home"></i></a></li>
+                                <li class="menu-item"><a href="/publish">Publish Book</a></li>
+                                <li class="menu-item"><a href="/checkout"> Book Sales</a></li>
+                                <li class="menu-item"><a href="/history">Contact Us</a></li>
+                                <li class="menu-item"><a href="/contactuscust">About Us</a></li>
                                 <li class="menu-item"><a href="/aboutuscust">About Us</a></li>
                             </ul> <!-- .menu -->
                             <div class="search-form">

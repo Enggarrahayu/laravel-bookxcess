@@ -8,6 +8,7 @@ use App\Models\Order;
 use Carbon\Carbon;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\OrderDetail;
+use App\Models\User;
 use Auth;
 use DB;
 
@@ -25,22 +26,23 @@ class OrderController extends Controller
 		$date = Carbon::now();
 
 		//save to tb_order_detail
-		$new_order = Order::where('user_id', Auth::user()->id)->where('status',0)->first();
-		$cek_order_detail = OrderDetail::where('ebook_id',$ebook->id)->where('order_id', $new_order->id)->first();
-
-		if (empty($cek_order_detail)) {
+		$cek_order = Order::where('user_id', Auth::user()->id)->where('status', 0)->first();
+		if (empty($cek_order)) {
 			//save to tb_order
 			$order = new Order;
 			$order->user_id = Auth::user()->id;
 			$order->order_date = $date;
 			$order->status = 0;
 			// $order->qty = $request->qty;
-			$order->total_price = $ebook->ebook_price;
+			$order->total_price = 0;
 			$order->code = mt_rand(100, 999);
 			$order->save();
-			$order = Order::where('user_id', Auth::user()->id)->where('status',0)->first();
-		 
+		} 
 
+		$new_order = Order::where('user_id', Auth::user()->id)->where('status',0)->first();
+		$cek_order_detail = OrderDetail::where('ebook_id',$ebook->id)->where('order_id', $new_order->id)->first();
+		if (empty($cek_order_detail)) {
+			
 			$order_detail = new OrderDetail;
 			$order_detail->ebook_id = $ebook->id;
 			$order_detail->order_id = $new_order->id;
@@ -53,8 +55,10 @@ class OrderController extends Controller
 		 	 Alert::error('Book Already Existed in Cart', 'Failed!');	
 		 	 return redirect('customer');
 		 }
-		 	// $order->total_price = \App\Models\OrderDetail::select(DB::raw('SUM(total_price)'))->groupBy('order_id')->first();
-		 	// $order->update();
+
+		 	$order = Order::where('user_id', Auth::user()->id)->where('status',0)->first();
+	    	$order->total_price = $order->total_price+$ebook->ebook_price;
+	    	$order->update();
 			Alert::success('Book Has Been Added To Cart', 'Success!');
 			return redirect('customer');
 		
@@ -71,6 +75,25 @@ class OrderController extends Controller
 
 		return view('frontend.customer.cart', compact('order','order_details'));
 	}
+
+	public function confirmation()
+    {
+        $user = User::where('id', Auth::user()->id)->first();
+
+        $order = Order::where('user_id', Auth::user()->id)->where('status',0)->first();
+        $order_id = $order->id;
+        $order->status = 1;
+        $order->update();
+
+        $order_details = OrderDetail::where('order_id', $order_id)->get();
+        foreach ($order_details as $order_detail) {
+            $ebook = Ebook::where('id', $order_detail->ebook_id)->first();
+            $ebook->update();
+        }
+
+        Alert::success('Pesanan Sukses Check Out Silahkan Lanjutkan Proses Pembayaran', 'Success');
+        return redirect('history/'.$order_id);
+    }
 
   	
 }

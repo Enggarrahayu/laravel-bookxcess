@@ -101,7 +101,7 @@
                         <div class="product">
                             <div class="inner-product">
                                 <div class="figure-image">
-                                    <a href="single.html"><img src="data:image/png;base64,{{ chunk_split(base64_encode($ebook->ebook_image)) }}" alt="Game 1"></a>
+                                    <a href="single.html"><img src="{{ url('uploads') }}/{{ $ebook->ebook_image }}" alt="Game 1"></a>
                                 </div>
                                 <h3 class="product-title"><a href="#">{{ $ebook->ebook_title }}</a></h3>
                                 <small class="price">{{ $ebook->ebook_price}}</small>

@@ -47,7 +47,7 @@
 							<ul class="menu">
 								<li class="menu-item home current-menu-item"><a href="/publisherhome"><i class="icon-home"></i></a></li>
 								<li class="menu-item"><a href="products.html">Published Book</a></li>
-								<li class="menu-item"><a href="products.html">Publish Book</a></li>
+								<li class="menu-item"><a href="/publish">Publish Book</a></li>
 								<li class="menu-item"><a href="/contactuspub">Contact Us</a></li>
 								<li class="menu-item"><a href="/aboutuspub">About Us</a></li>
 							</ul> <!-- .menu -->

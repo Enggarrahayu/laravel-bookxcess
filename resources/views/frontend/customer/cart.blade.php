@@ -18,7 +18,7 @@
 								<tr>
 									<td class="product-name">
 										<div class="product-thumbnail">
-											<img style="width: 150px;"  src="data:image/png;base64,{{ chunk_split(base64_encode($order_detail->ebook->ebook_image)) }}" alt="">
+											<img style="width: 150px;"  src="{{ url('storage') }}/{{ $order_detail->ebook->ebook_image }}" alt="">
 										</div>
 										<div class="product">
 											<div class="inner-product">
@@ -46,13 +46,13 @@
 
 						<div class="cart-total">
 							<?php 
-								$total = \App\Models\OrderDetail::select(DB::raw('SUM(total_price)'))->groupBy('order_id')->first();
+								$total = \App\Models\Order::select(DB::raw('SUM(total_price)'))->groupBy('user_id')->first();
 								
 							?>
-							<p class="total"><strong>Total</strong><span class="num">Rp. {{$total['SUM(total_price)']}}</span></p>
+							<p class="total"><strong>Total</strong><span class="num">Rp. {{$order->total_price}}</span></p>
 							<p>
-								<a href="#" class="button muted">Continue Shopping</a>
-								<a href="#" class="button">Finalize and pay</a>
+								<a href="/customer" class="button muted">Continue Shopping</a>
+								<a href="{{ url('confirmation') }}" class="button" onclick="return confirm('Anda yakin akan Check Out ?');" >Finalize and pay</a>
 							</p>
 						</div> <!-- .cart-total -->
 						

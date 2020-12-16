@@ -37,8 +37,12 @@ Route::get('/contactuscust', function() {
   return view('frontend/customer/contactuscust');
  });
 
+Route::get('confirmation', 'App\Http\Controllers\OrderController@confirmation');
+Route::get('history', 'App\Http\Controllers\HistoryController@index');
+Route::get('history/{id}', 'App\Http\Controllers\HistoryController@detail');
+Route::get('mycollection','App\Http\Controllers\CollectionController@index');
 
-
+Route::get('download/{id}', 'App\Http\Controllers\CollectionController@download');
 
 
 // publisher
@@ -53,6 +57,9 @@ Route::get('/aboutuspub', function() {
 Route::get('/contactuspub', function() {
   return view('frontend/publisher/contactuspub');
  });
+Route::get('/publishs', function() {
+  return view('frontend/publisher/publishs');
+ });
 
 Route::get('test', 'App\Http\Controllers\AuthController@index')->name('test');
 Route::get('auth', 'App\Http\Controllers\AuthController@getLogin')->name('auth');
@@ -63,12 +70,15 @@ Route::post('/user/add','App\Http\Controllers\AuthController@postRegister')->nam
 Route::get('detail/{id}', 'App\Http\Controllers\DetailController@index');
 Route::get('checkout','App\Http\Controllers\OrderController@checkout');
 
-
 Route::post('order/{id}','\App\Http\Controllers\OrderController@order');
 
 // Route::get('/signin', function() {
 //   return view('frontend/login-index');
 //  });
+
+Route::get('/publish','App\Http\Controllers\PublishController@publishBook');
+Route::post('/upload','App\Http\Controllers\PublishController@store')->name('upload');
+
 
 Route::group(['middleware' => ['auth','CheckRoles:customer']],function(){
 	Route::get('/customer','App\Http\Controllers\CustomerController@index');
