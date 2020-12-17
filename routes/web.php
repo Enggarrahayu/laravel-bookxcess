@@ -16,7 +16,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 */
 
 Route::get('/', function(){
-	return view('register');
+	return view('/login');
 });
 
 Route::get('/customerhome', function() {
