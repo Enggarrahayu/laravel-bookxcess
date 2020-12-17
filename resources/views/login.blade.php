@@ -39,7 +39,7 @@
 
 					<div class="right-section pull-right">
 						<!-- <a href="cart.html" class="cart"><i class="icon-cart"></i> Cart</a> -->
-						<a href="#" class="login-button">Login/Register</a>
+						<a href="#" class="login-button" id="logres-btn">Login/Register</a>
 					</div> <!-- .right-section -->
 
 					<div class="main-navigation">
