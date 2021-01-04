@@ -51,8 +51,9 @@
 					</a> <!-- #branding -->
 
 					<div class="right-section pull-right">
-							
-						<a href="#">My Account</a>
+						<a href="/checkout" class="cart"><i class="icon-cart"></i> 
+						</a>
+						
 						<a href="/logout">Logout <small> {{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->email }}} </small></a>
 					</div> <!-- .right-section -->
 
@@ -62,8 +63,8 @@
                                 <li class="menu-item home current-menu-item"><a href="/publisher"><i class="icon-home"></i></a></li>
                                 <li class="menu-item"><a href="/publish">Publish Book</a></li>
                                 <li class="menu-item"><a href="/checkout"> Book Sales</a></li>
-                                <li class="menu-item"><a href="/history">Contact Us</a></li>
-                                <li class="menu-item"><a href="/contactuscust">About Us</a></li>
+                                <li class="menu-item"><a href="/acceptpay">Accpet Payment</a></li>
+                                <li class="menu-item"><a href="/contactuscust">Contact Us</a></li>
                                 <li class="menu-item"><a href="/aboutuscust">About Us</a></li>
                             </ul> <!-- .menu -->
                             <div class="search-form">
@@ -172,6 +173,8 @@
 						<input type="submit" value="register">
 					</form>
 				</div> <!-- .column -->
+
+				
 			</div> <!-- .row -->
 		</div> <!-- .auth-popup -->
 

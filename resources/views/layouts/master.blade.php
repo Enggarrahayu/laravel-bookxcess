@@ -72,16 +72,8 @@
                                 <li class="menu-item home current-menu-item"><a href="/customer"><i class="icon-home"></i></a></li>
                                 <li class="menu-item"><a href="/mycollection">My Collection</a></li>
                                 <li class="menu-item">
-                                      <?php
-                                    $main_order = \App\Models\Order::where('user_id', Auth::user()->id)->where('status',0)->first();
-                                    if (!empty($main_order)) {
-                                    	$notif = \App\Models\OrderDetail::where('order_id', $main_order->id)->count();
-                                    }
-                                    
-                                    ?>
-                                    <a href="/checkout">@if(!empty($notif))
-                                    	{{$notif}}
-                                    	@endif<i class="fa fa-shopping-cart" style="color:black"></i> <span class="badge badge-danger"></span>Purchase Now </a></li>
+                                     
+                                    <a href="/checkout"><i class="fa fa-shopping-cart" style="color:black"></i> <span class="badge badge-danger"></span>Purchase Now </a></li>
                                 <li class="menu-item"><a href="/history">History</a></li>
                                 <li class="menu-item"><a href="/contactuscust">Contact Us</a></li>
                                 <li class="menu-item"><a href="/aboutuscust">About Us</a></li>

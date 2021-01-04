@@ -69,6 +69,8 @@ Route::get('/register', 'App\Http\Controllers\AuthController@getRegister')->name
 Route::post('/user/add','App\Http\Controllers\AuthController@postRegister')->name('user/add');
 Route::get('detail/{id}', 'App\Http\Controllers\DetailController@index');
 Route::get('checkout','App\Http\Controllers\OrderController@checkout');
+Route::get('showall','App\Http\Controllers\CustomerController@showAll');
+Route::delete('delete/{id}', 'App\Http\Controllers\OrderController@delete');
 
 Route::post('order/{id}','\App\Http\Controllers\OrderController@order');
 
@@ -78,6 +80,7 @@ Route::post('order/{id}','\App\Http\Controllers\OrderController@order');
 
 Route::get('/publish','App\Http\Controllers\PublishController@publishBook');
 Route::post('/upload','App\Http\Controllers\PublishController@store')->name('upload');
+Route::get('/acceptpay','App\Http\Controllers\PublisherController@acceptPayment');
 
 
 Route::group(['middleware' => ['auth','CheckRoles:customer']],function(){
@@ -87,6 +90,11 @@ Route::group(['middleware' => ['auth','CheckRoles:customer']],function(){
 Route::group(['middleware' => ['auth','CheckRoles:publisher']],function(){
 	Route::get('/publisher','App\Http\Controllers\PublisherController@index');
 });
+
+Route::get('/publish','App\Http\Controllers\PublishController@publishBook');
+Route::post('/upload','App\Http\Controllers\PublishController@store')->name('upload');
+Route::get('/acceptpay','App\Http\Controllers\PublisherController@acceptPayment');
+Route::get('fixpayment','App\Http\Controllers\PublisherController@fixPayment');
 
 // Auth::routes();
 

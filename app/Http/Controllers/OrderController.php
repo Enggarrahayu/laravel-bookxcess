@@ -95,5 +95,20 @@ class OrderController extends Controller
         return redirect('history/'.$order_id);
     }
 
+        public function delete($id)
+    {
+        $order_detail =OrderDetail::where('id', $id)->first();
+
+        $order = Order::where('id', $order_detail->order_id)->first();
+        $order->total_price = $order->total_price-$order_detail->total_price;
+        $order->update();
+
+
+        $order_detail->delete();
+
+        Alert::error('Order deleted successfully', 'Delete');
+        return redirect('/checkout');
+    }
+
   	
 }

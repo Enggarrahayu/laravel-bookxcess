@@ -13,7 +13,13 @@ class CustomerController extends Controller
 {
    	public function index()
 	  {
-	   		$data_ebook = Ebook::all();
+	   		$data_ebook = Ebook::paginate(4);
+    		return view('frontend.customer.indextry',['data_ebook' => $data_ebook]);
+	  }
+
+	  public function showAll()
+	  {
+	  		$data_ebook = Ebook::all();
     		return view('frontend.customer.indextry',['data_ebook' => $data_ebook]);
 	  }
 

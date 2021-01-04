@@ -9,7 +9,7 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ url('home') }}">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Order History</li>
+                    <li class="breadcrumb-item active" aria-current="page">Book Collection</li>
                 </ol>
             </nav>
         </div>
@@ -28,8 +28,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $no = 1; ?>
-                            @foreach($order_details as $order_detail)
+                            if (!empty($order_details)) {
+                                <?php $no = 1; ?>
+                                @foreach($order_details as $order_detail)
                             <tr>
                                 <td>{{ $no++ }}</td>
                                 <td>{{ $order_detail->ebook->ebook_title }}</td>
@@ -41,6 +42,7 @@
                                 </td>
                             </tr>
                             @endforeach
+                        
                         </tbody>
                     </table>
                 </div>

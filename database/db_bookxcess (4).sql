@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 16, 2020 at 05:17 PM
+-- Generation Time: Dec 19, 2020 at 09:04 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.2
 
@@ -147,7 +147,13 @@ CREATE TABLE `tb_ebook` (
 INSERT INTO `tb_ebook` (`id`, `ebook_category`, `ebook_published_date`, `ebook_title`, `ebook_price`, `short_desc`, `ebook_type`, `ebook_status`, `ebook_downloadable`, `ebook_image`, `ebook_file`, `publisher_id`, `updated_at`, `created_at`) VALUES
 (1, 'Novel', '2020-12-16 08:08:27', 'Pulang', 40000, 'Sebuah kisah tentang perjalanan pulang, melalui pertarungan demi pertarungan, untuk memeluk erat semua kebencian dan rasa sakit.', 'PDF', 'Active', 'YES', 'pulang.jpg', 'pulang.pdf', 0, NULL, NULL),
 (2, 'Novel', '2020-12-16 11:18:59', 'Summer Breeze', 50000, 'Summer Breeze Bercerita tentang apa ya aku gatau yang penting ada deskripsinya hehe', 'PDF', 'Active', 'YES', 'summer.jpg', 'SummerBreeze.pdf', 3, NULL, NULL),
-(6, 'education', '2020-12-15 23:07:53', 'Pemrograman Web', 70000, 'Bismillah semoga berhasil upload kali inii. aamiin', 'pdf', '0', 'yes', '1608098873.jpg', '1608098873.pdf', 3, '2020-12-15 23:07:53', '2020-12-15 23:07:53');
+(3, 'Fiction', '2020-12-17 05:29:54', 'valerian', 25000, 'This is a great time to be reading comic books. While most people think of tights and capes when it comes to comics, there are incredible stories beyo', 'PDF', 'Active', 'YES', 'valerian.png', 'valerian.pdf', 3, NULL, NULL),
+(4, 'Fiction', '2020-12-17 05:32:34', 'Space Bandits', 30000, 'Here’s the thing about comic books: they’re an irreplaceable art form. It’s a bold statement, given the conversations surrounding physical formats and', 'PDF', 'Active', 'YES', 'spacebandits.jpg', 'spacebandits.pdf', 3, NULL, NULL),
+(5, 'Education', '2020-12-17 05:35:04', 'Python Programming', 65000, 'Never done coding yet have been around PCs for quite a while. Love this book since it shows you the fundamentals, tests your insight toward the finish', 'PDF', 'Active', 'YES', 'python.jpg', 'python.pdf', 0, NULL, NULL),
+(6, 'education', '2020-12-15 23:07:53', 'Pemrograman Web', 70000, 'Bismillah semoga berhasil upload kali inii. aamiin', 'pdf', '0', 'yes', '1608098873.jpg', '1608098873.pdf', 3, '2020-12-15 23:07:53', '2020-12-15 23:07:53'),
+(7, 'Hobby', '2020-12-17 05:37:20', 'Piano Lessons', 80000, 'Piano Lessons for Beginners: Advanced Methods to Learn Piano Lessons and the Importance of Piano Musical Chords', 'PDF', 'Active', 'YES', 'pianolessons.jpg', 'pianolessons.pdf', 0, NULL, NULL),
+(8, 'Hobby', '2020-12-17 05:40:41', 'Accoustic Guitar Tab Method', 65000, 'This is the acoustic guitar method students and teachers have been waiting for. Learn chords with songs like “Eleanor Rigby” and “Knockin\' on Heaven\'s', 'PDF', 'Active', 'YES', 'guitar.jpg', 'guitar.pdf', 3, NULL, NULL),
+(9, 'novel', '2020-12-17 01:07:13', 'The Road', 100000, 'blabla', 'pdf', '0', 'yes', '1608192433.jpg', '1608192433.pdf', 3, '2020-12-17 01:07:13', '2020-12-17 01:07:13');
 
 -- --------------------------------------------------------
 
@@ -171,8 +177,9 @@ CREATE TABLE `tb_order` (
 --
 
 INSERT INTO `tb_order` (`id`, `user_id`, `order_date`, `status`, `total_price`, `code`, `created_at`, `updated_at`) VALUES
-(86, 2, '2020-12-16 06:54:40', 2, 90000, 906, '2020-12-15 05:41:07', '2020-12-15 07:07:58'),
-(100, 2, '2020-12-16 16:03:06', 1, 110000, 186, '2020-12-16 05:27:04', '2020-12-16 09:03:06');
+(100, 2, '2020-12-17 08:04:42', 2, 110000, 186, '2020-12-16 05:27:04', '2020-12-17 01:04:42'),
+(101, 2, '2020-12-17 06:57:06', 1, 25000, 688, '2020-12-16 23:11:02', '2020-12-16 23:57:06'),
+(102, 2, '2020-12-17 08:02:53', 1, 65000, 112, '2020-12-17 00:20:29', '2020-12-17 01:02:53');
 
 -- --------------------------------------------------------
 
@@ -194,11 +201,12 @@ CREATE TABLE `tb_order_detail` (
 --
 
 INSERT INTO `tb_order_detail` (`id`, `ebook_id`, `order_id`, `total_price`, `created_at`, `updated_at`) VALUES
-(71, 1, 86, 40000, '2020-12-15 05:41:07', '2020-12-15 05:41:07'),
-(77, 2, 86, 50000, '2020-12-15 06:14:03', '2020-12-15 06:14:03'),
 (90, 1, 99, 40000, '2020-12-15 08:37:23', '2020-12-15 08:37:23'),
 (91, 1, 100, 40000, '2020-12-16 05:27:04', '2020-12-16 05:27:04'),
-(92, 6, 100, 70000, '2020-12-16 09:01:57', '2020-12-16 09:01:57');
+(92, 6, 100, 70000, '2020-12-16 09:01:57', '2020-12-16 09:01:57'),
+(93, 3, 101, 25000, '2020-12-16 23:11:03', '2020-12-16 23:11:03'),
+(94, 1, 102, 40000, '2020-12-17 00:20:29', '2020-12-17 00:20:29'),
+(95, 3, 102, 25000, '2020-12-17 01:02:09', '2020-12-17 01:02:09');
 
 -- --------------------------------------------------------
 
@@ -339,19 +347,19 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `tb_ebook`
 --
 ALTER TABLE `tb_ebook`
-  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `tb_order`
 --
 ALTER TABLE `tb_order`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
 
 --
 -- AUTO_INCREMENT for table `tb_order_detail`
 --
 ALTER TABLE `tb_order_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
 
 --
 -- AUTO_INCREMENT for table `tb_publisher`

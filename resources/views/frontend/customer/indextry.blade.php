@@ -4,9 +4,9 @@
 <div class="page" style="padding-top:30px;">
                 <section>
                     <header>
-                        <p style="text-align:center"> CUSTOMER PAGE </p> 
+                        <p style="text-align:center; font-size: 30pt;"><strong> CUSTOMER PAGE </strong></p> 
                         <h2 class="section-title">New Release</h2>
-                        <a href="#" class="all">Show All</a>
+                        <a href="showall" class="all">Show All</a>
                     </header>
 
                     <div class="product-list">

@@ -33,22 +33,26 @@
 									<td class="product-qty">
 										<select name="#">
 											<option value="1">1</option>
-											<option value="2">2</option>
-											<option value="3">3</option>
 										</select>
 									</td>
 									<td class="product-total">{{$order_detail->total_price}}</td>
-									<td class="action"><a href="#"><i class="fa fa-times"></i></a></td>
+									<
+										<td class="action">
+											<form action="{{ url('delete') }}/{{ $order_detail->id }}" method="post">
+												@csrf
+                                       			 {{ method_field('DELETE') }}
+												<button  class="btn btn-danger btn-sm" type="submit" onclick="return confirm('Anda yakin akan menghapus data ?');"> <i class="fa fa-trash"></i>
+												</button>
+											</form>
+										</td>
+									
 								</tr>
 								@endforeach
 							</tbody>
 						</table> <!-- .cart -->
 
 						<div class="cart-total">
-							<?php 
-								$total = \App\Models\Order::select(DB::raw('SUM(total_price)'))->groupBy('user_id')->first();
-								
-							?>
+						
 							<p class="total"><strong>Total</strong><span class="num">Rp. {{$order->total_price}}</span></p>
 							<p>
 								<a href="/customer" class="button muted">Continue Shopping</a>
