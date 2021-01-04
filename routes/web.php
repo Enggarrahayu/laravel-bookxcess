@@ -16,9 +16,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 */
 
 Route::get('/', function(){
-  Alert::success('Success Title', 'Success Message');
-
-	return view('welcome');
+	return view('/login');
 });
 
 Route::get('/customerhome', function() {
@@ -65,6 +63,7 @@ Route::get('test', 'App\Http\Controllers\AuthController@index')->name('test');
 Route::get('auth', 'App\Http\Controllers\AuthController@getLogin')->name('auth');
 Route::post('auth2', 'App\Http\Controllers\AuthController@postLogin')->name('auth2');
 Route::get('logout', '\App\Http\Controllers\AuthController@logout');
+Route::get('/login', 'App\Http\Controllers\AuthController@getRegister')->name('register');
 Route::get('/register', 'App\Http\Controllers\AuthController@getRegister')->name('register');
 Route::post('/user/add','App\Http\Controllers\AuthController@postRegister')->name('user/add');
 Route::get('detail/{id}', 'App\Http\Controllers\DetailController@index');

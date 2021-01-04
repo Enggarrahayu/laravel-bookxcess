@@ -4372,6 +4372,11 @@ input[type=button].btn-block {
   background-color: #adb5bd;
 }
 
+h2.slide-title{
+    font-size: 72px;
+    background-color: red;
+}
+
 .custom-range:disabled::-webkit-slider-runnable-track {
   cursor: default;
 }

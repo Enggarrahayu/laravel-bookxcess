@@ -2312,10 +2312,12 @@ form textarea {
 }
 .home-slider .slide-title {
   font-size: 65px;
+  font-family: fantasy;
   font-size: 4.6428571429em;
   font-weight: 300;
   color: white;
   margin-bottom: 10px;
+  background-color: rgba(0,0,0,.5);
 }
 .home-slider .slide-subtitle {
   font-size: 24px;
