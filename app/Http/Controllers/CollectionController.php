@@ -18,10 +18,18 @@ class CollectionController extends Controller
 {
     public function index()
     {
-    	$collection = Order::where('user_id', Auth::user()->id)->where('status', 2)->first();
-    	$order_details = OrderDetail::where('order_id', $collection->id)->get();
+    	$collection = Order::where('user_id', Auth::user()->id)->where('status', 2)->get();
 
-    	return view('frontend.customer.collection', compact('collection','order_details'));
+        foreach ($collection as $coll) {
+            $order_details = OrderDetail::where('order_id', $coll->id)->get();
+        }
+
+        foreach ($order_details as $order_detail) {
+            $ebook = Ebook::where('id', $order_detail->ebook_id)->get();
+        }
+    	
+
+    	return view('frontend.customer.collection', compact('ebook','collection','order_details'));
     }
 
     public function download($id)

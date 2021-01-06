@@ -52,8 +52,11 @@
 						</table> <!-- .cart -->
 
 						<div class="cart-total">
+							@if(!empty($order))
+								<p class="total"><strong>Total</strong><span class="num">Rp. {{$order->total_price}}</span></p>
+							@endif
 						
-							<p class="total"><strong>Total</strong><span class="num">Rp. {{$order->total_price}}</span></p>
+							
 							<p>
 								<a href="/customer" class="button muted">Continue Shopping</a>
 								<a href="{{ url('confirmation') }}" class="button" onclick="return confirm('Anda yakin akan Check Out ?');" >Finalize and pay</a>

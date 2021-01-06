@@ -23,10 +23,7 @@ class PublisherController extends Controller
 	  public function acceptPayment()
 	  {
 			$accept  = Order::where('status', 1)->get();
-			$accepts  = Order::where('status', 1)->first();
-			$order_details = OrderDetail::where('order_id', $accepts->id)->first();
-			$user = User::where('id', $accepts->user_id)->first();
-			return view('frontend.publisher.acceptpay', compact('accept','order_details','user'));
+			return view('frontend.publisher.acceptpay', compact('accept'));
 	  }
 
 	  public function fixPayment()

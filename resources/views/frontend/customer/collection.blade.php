@@ -17,34 +17,32 @@
             <div class="card">
                 <div class="card-body">
                     <h3><i class="fa fa-history"></i> Book Collection</h3>
+
                     <table class="table table-striped">
+
                         <thead>
                             <tr>
                                 <th>No</th>
                                 <th>Book Title</th>
-                                <th>Ordered Date</th>
-                                <th>Total Price</th>
-                                <th>Download</th>
+                                <th>Download File</th>
                             </tr>
                         </thead>
                         <tbody>
-                            if (!empty($order_details)) {
                                 <?php $no = 1; ?>
-                                @foreach($order_details as $order_detail)
+                                @foreach($ebook as $book)
                             <tr>
                                 <td>{{ $no++ }}</td>
-                                <td>{{ $order_detail->ebook->ebook_title }}</td>
-                                <td>  {{$collection->order_date}} </td>
-                                <td>{{ $order_detail->ebook->ebook_price}}</td>
+                                <td>{{ $book->ebook_title }}</td>
                                 <td>
-                                    <a href="{{ url('storage'.'/'.$order_detail->ebook->ebook_file) }}" class="button"><i class="fa fa-info"></i> {{ $order_detail->ebook->ebook_file }}</a>
+                                    <a href="{{ url('storage'.'/'.$book->ebook_file) }}" class="button"><i class="fa fa-info"></i> {{ $book->ebook_file }}</a>
 
                                 </td>
                             </tr>
                             @endforeach
-                        
+                          
                         </tbody>
                     </table>
+
                 </div>
             </div>
         </div>
